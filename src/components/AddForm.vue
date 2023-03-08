@@ -26,6 +26,13 @@ export default {
             role: '',
         }
     },
+    methodes: {
+        handleAddUser:() => {
+            console.log(this.name())
+            console.log(this.age())
+            console.log(this.role())
+        }
+    }
 }
 </script>
 
