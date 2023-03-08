@@ -29,9 +29,7 @@ export default {
     },
     methods: {
         handleAddUser() {
-            console.log(this.name)
-            console.log(this.age)
-            console.log(this.role)
+            this.$emit('addUser', {name: this.name, age:this.age, role:this.role})
         }
     }
 }
