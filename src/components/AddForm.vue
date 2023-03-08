@@ -1,6 +1,7 @@
 <template>
     <div>
-        <form>
+        <!-- event modifier -->
+        <form v-on:submit.prevent="handleAddUser">
             <label for="">Name <br>
                 <input type="text" placeholder="your Name here ..." v-model="name"> <br>
             </label>
@@ -11,7 +12,7 @@
                 <input type="text" placeholder="your Role here ..." v-model="role"> <br>
             </label>
 
-            <button>Add</button>
+            <button type="submit">Add</button>
         </form>
     </div>
 </template>
@@ -26,11 +27,11 @@ export default {
             role: '',
         }
     },
-    methodes: {
-        handleAddUser:() => {
-            console.log(this.name())
-            console.log(this.age())
-            console.log(this.role())
+    methods: {
+        handleAddUser() {
+            console.log(this.name)
+            console.log(this.age)
+            console.log(this.role)
         }
     }
 }
