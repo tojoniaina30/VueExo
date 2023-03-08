@@ -1,18 +1,30 @@
 <template>
   <div id="app">
-    <AddForm/>
+    <AddForm @addUser="addUser" />
+    <UserCard />
   </div>
 </template>
 
 <script>
 import AddForm from './components/AddForm.vue';
+import UserCard from './components/UserCard.vue';
 
 export default {
   name: 'App',
   components: {
     AddForm,
-  }
-  
+    UserCard
+},
+  data(){
+    return{
+      users:[]
+    }
+  },
+  methods: {
+    addUser: function (newUser) {
+      this.users.push(newUser)
+    }
+  },
 }
 </script>
 
