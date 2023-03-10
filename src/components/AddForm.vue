@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <div class="container">
         <!-- event modifier -->
-        <form v-on:submit.prevent="handleAddUser">
+        <form v-on:submit.prevent="handleAddUser" class="form">
             <label for="">Name <br>
                 <input type="text" placeholder="your Name here ..." v-model="name"> <br>
             </label>
@@ -35,6 +35,16 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+    .container{
+        margin: 10px auto;
+    }
+    .form{
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        gap: 10px;
+        margin: 10px auto;
+    }
 </style>

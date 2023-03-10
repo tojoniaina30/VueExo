@@ -1,28 +1,39 @@
 <template>
   <div id="app">
+    <WaitSpinner v-if="showLoading"/>
+    <button @click="handleToggle">toggle</button>
     <AddForm @addUser="addUser" />
-    <UserCard />
+    <UserCard v-bind:allUsers="users" msg="form Done"/>
   </div>
 </template>
 
 <script>
 import AddForm from './components/AddForm.vue';
 import UserCard from './components/UserCard.vue';
+import WaitSpinner from './components/WaitSpinner.vue';
 
 export default {
   name: 'App',
   components: {
     AddForm,
-    UserCard
+    UserCard,
+    WaitSpinner
 },
   data(){
     return{
-      users:[]
+      users:[],
+      showLoading:true,
     }
   },
   methods: {
     addUser: function (newUser) {
       this.users.push(newUser)
+    },
+    handleToggle:function(){
+      console.log('clicked');
+      this.showLoading = !this.showLoading
+      /*  let oldValue = this.showLoading
+          this.showLoading = !=oldValue */
     }
   },
 }
