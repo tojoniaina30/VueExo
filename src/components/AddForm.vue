@@ -37,7 +37,11 @@ export default {
 
 <style scoped>
     .container{
-        margin: 10px auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
     }
     .form{
         display:flex;
@@ -45,6 +49,9 @@ export default {
         justify-content: center;
         align-items: start;
         gap: 10px;
-        margin: 10px auto;
+        padding: 50px 150px;
+        background-color: rgb(232, 56, 147);
+        border-radius: 25px;
+        width: 500px;
     }
 </style>

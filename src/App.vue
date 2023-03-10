@@ -1,9 +1,10 @@
 <template>
   <div id="app">
     <WaitSpinner v-if="showLoading"/>
-    <button @click="handleToggle">toggle</button>
-    <AddForm @addUser="addUser" />
+    <button v-if="showLoading" @click="handleToggle">toggle</button>
+    <AddForm v-if="!showLoading" @addUser="addUser" />
     <UserCard v-bind:allUsers="users" msg="form Done"/>
+    <AddModal v-if="!showLoading" @click="handleToggle"/>
   </div>
 </template>
 
@@ -11,13 +12,15 @@
 import AddForm from './components/AddForm.vue';
 import UserCard from './components/UserCard.vue';
 import WaitSpinner from './components/WaitSpinner.vue';
+import AddModal from './components/AddModal.vue'
 
 export default {
   name: 'App',
   components: {
     AddForm,
     UserCard,
-    WaitSpinner
+    WaitSpinner,
+    AddModal,
 },
   data(){
     return{
@@ -29,12 +32,18 @@ export default {
     addUser: function (newUser) {
       this.users.push(newUser)
     },
-    handleToggle:function(){
-      console.log('clicked');
-      this.showLoading = !this.showLoading
+    handleToggle:function() {
+        this.showLoading = !this.showLoading
+     
       /*  let oldValue = this.showLoading
           this.showLoading = !=oldValue */
     }
+  },
+  mounted() {
+    setTimeout(() => {
+      console.log('after 7 seconds');
+      this.showLoading = !this.showLoading;
+    }, 7000);
   },
 }
 </script>
@@ -46,6 +55,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
