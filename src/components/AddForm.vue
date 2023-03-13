@@ -13,6 +13,8 @@
             </label>
 
             <button type="submit">Add</button>
+            <button @click="openModal">Open Modal</button>
+            <button @click="changeTestValue"> Change </button>
         </form>
     </div>
 </template>
@@ -27,11 +29,20 @@ export default {
             role: '',
         }
     },
+    props: ['test'],
     methods: {
         handleAddUser() {
             this.$emit('addUser', {name: this.name, age:this.age, role:this.role})
+        },
+        openModal () {
+            this.$emit('showModal')
+        },
+        changeTestValue () {
+            /* = :affeectation de valeur */
         }
-    }
+    },
+
+
 }
 </script>
 

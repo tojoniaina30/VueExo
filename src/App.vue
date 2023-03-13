@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <WaitSpinner v-if="showLoading"/>
+    <WaitSpinner v-if="showLoading"/>  
     <button v-if="showLoading" @click="handleToggle">toggle</button>
-    <AddForm v-if="!showLoading" @addUser="addUser" />
+    <AddForm v-if="!showLoading" @showModal ="handleOpenModal" v-bind:test="test"/>
     <UserCard v-bind:allUsers="users" msg="form Done"/>
-    <AddModal v-if="!showLoading" @click="handleToggle"/>
+    <AddModal v-if="showModal" @showModal = "!handleOpenModal"/>
   </div>
 </template>
 
@@ -26,6 +26,8 @@ export default {
     return{
       users:[],
       showLoading:true,
+      showModal:false,
+      test:""
     }
   },
   methods: {
@@ -34,10 +36,13 @@ export default {
     },
     handleToggle:function() {
         this.showLoading = !this.showLoading
-     
       /*  let oldValue = this.showLoading
           this.showLoading = !=oldValue */
-    }
+    },
+    handleOpenModal(){
+    console.log('handelOpenModal');
+    this.showModal = !this.showModal
+  }
   },
   mounted() {
     setTimeout(() => {
